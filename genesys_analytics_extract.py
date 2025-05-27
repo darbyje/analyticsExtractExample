@@ -31,10 +31,13 @@ def query_analytics(access_token, region, body):
     return response.json()
 
 def main():
-    # Example body
+    # Request all available metrics except those starting with 't'
+    metrics = [
+        "nBlindTransferred", "nBotInteractions", "nCobrowseSessions", "nConnected", "nConsult", "nConsultTransferred", "nError", "nOffered", "nOutbound", "nOutboundAbandoned", "nOutboundAttempted", "nOutboundConnected", "nOverSla", "nStateTransitionError", "nTransferred", "oExternalMediaCount", "oMediaCount", "oMessageCount", "oMessageSegmentCount", "oMessageTurn", "oServiceLevel", "oServiceTarget"
+    ]
     body = {
         "interval": "2025-05-18T14:00:00.000Z/2025-05-23T14:00:00.000Z",
-        "metrics": ["nConnected"]
+        "metrics": metrics
     }
     try:
         token = get_access_token(CLIENT_ID, CLIENT_SECRET, REGION)
